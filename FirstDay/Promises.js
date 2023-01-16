@@ -1,7 +1,7 @@
 function getBooks(callback){
     return new Promise((resolve, reject)=>{
         let books = []
-        setTimeout(()=>{
+        setTimeout(()=>{ // wait 1 sec then fill the books array
             books = [
                 {
                     title: "Title 1",
@@ -12,13 +12,13 @@ function getBooks(callback){
                     author: "Aya"
                 }
             ]
-            resolve(books)
+            resolve(books) // if the promise is done (with no errors) it will return the books
         }, 1000)
     })
 }
 
 function findAuthor(callback, bookTitle){
-    getBooks().then((books)=>{
+    getBooks().then((books)=>{ // get the books, if no error occured then run the function in (then)
         const book = books.find((book) => (book.title === bookTitle));
         callback(book.author)
     })
